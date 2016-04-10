@@ -1,0 +1,51 @@
+def menu():
+    print("Menu:\n(L)ist all items\n(H)ire an item\n(R)eturn\n(A)dd new item to stock\n(Q)uit")
+    return
+
+def load_items(list_of_items, number_of_items):
+    with open('items.csv', newline='') as csvfile:
+        file = csv.reader(csvfile)
+        for row in file:
+            list_of_items.append(row)
+            number_of_items += 1
+    print(number_of_items, "items loaded from items.csv")
+    return list_of_items, number_of_items
+
+def list_items(updated_list_of_items, updated_number_of_items):
+    count_number = 0
+    print("All items on file (* indicates item is currently out):")
+    while updated_number_of_items > count_number:
+        select_tuple = updated_list_of_items[count_number]
+        name, description, cost, stock = select_tuple[0], select_tuple[1], select_tuple[2], select_tuple[3]
+        if stock == "in":
+            stock = "*"
+        else:
+            stock = ""
+        count_number += 1
+        print(count_number, " - ", name,"(" + description + ")", cost, stock)
+    main()
+    
+def main():
+    list_of_items = []
+    number_of_items = 0
+    print("Items for hire - by Nick Mclean")
+    updated_list_of_items, updated_number_of_items = load_items(list_of_items, number_of_items)
+    menu()
+    choice = input(">>> ")
+    choice = choice.upper()
+
+    if choice == "L":
+        list_items(updated_list_of_items, updated_number_of_items)
+    elif choice == "H":
+        hire_items(updated_list_of_items, updated_number_of_items)
+    elif choice == "R":
+        return
+    elif choice == "A":
+        return
+    elif choice == "Q":
+        quit
+    else:
+        return
+
+
+main()
