@@ -1,3 +1,14 @@
+import csv
+
+'''
+define load_items function(list of items, number of items)
+    open items.csv as csvfile
+        for row in file
+            list of items add row of data
+            number of items add 1
+    display number of items loaded from file
+    return list o items and number of items
+'''
 def menu():
     print("Menu:\n(L)ist all items\n(H)ire an item\n(R)eturn\n(A)dd new item to stock\n(Q)uit")
     return
@@ -24,7 +35,100 @@ def list_items(updated_list_of_items, updated_number_of_items):
         count_number += 1
         print(count_number, " - ", name,"(" + description + ")", cost, stock)
     main()
-    
+'''
+define hire items function(list of items, number of items
+    count = 0
+    instock =[]
+
+    display items on file message
+    while number of items is greater than count
+        select tuple = list of items[count]
+        assign variables from each element of select tuple
+        if stock variable == in
+            stock = "*"
+            display formatted tuple
+            instock.append(count)
+            count + 1
+
+        else
+            count + 1
+
+    get variable input for number to hire
+    while input not in stock or is less than 0
+        print error message
+        get variable input for number to hire
+
+    select tuple = list of items[choice]
+    assign variables from each element of select tuple
+    display name of item hired message and cost
+
+    open csvfile
+    find row(choice]
+    change row[-1] == "out"
+    close csv file
+    call main
+'''
+def hire_items(updated_list_of_items, updated_number_of_items):
+    count_number = 0
+    instock = []
+
+    print("All items on file (* indicates item is currently out):")
+    while updated_number_of_items > count_number:
+        select_tuple = updated_list_of_items[count_number]
+        name, description, cost, stock = select_tuple[0], select_tuple[1], select_tuple[2], select_tuple[3]
+        if stock == "in":
+            stock = ""
+            print(count_number, " - ", name, "(" + description + ")", cost, stock)
+            instock.append(count_number)
+            count_number += 1
+
+        else:
+            stock ="*"
+            count_number += 1
+
+
+    choice = int(input("Enter the number of an item to hire\n>>>"))
+    while choice not in instock or choice < 0:
+        print("The given number is not in stock - try again")
+        choice = int(input("Enter the number of an item to hire\n>>>"))
+
+    select_tuple = updated_list_of_items[choice]
+    name, description, cost, stock = select_tuple[0], select_tuple[1], select_tuple[2], select_tuple[3]
+    print(name, "hired for $" + cost)
+
+'''
+define return items function(list of items, number of items
+    count = 0
+    instock =[]
+
+    while number of items is greater than count
+        select tuple = list of items[count]
+        assign variables from each element of select tuple
+        if stock = out
+            stock = "*"
+            display formatted tuple
+            instock.append(count)
+            count + 1
+
+        else
+            count + 1
+
+    get variable input for number to return
+    while input not in stock or is less than 0
+        print error message
+        get variable input for number to hire
+
+    select tuple = list of items[choice]
+    assign variables from each element of select tuple
+    display name of item hired message and cost
+
+    open csvfile
+    find row(choice]
+    change row[-1] == "in"
+    close csv file
+    call main
+'''
+
 def main():
     list_of_items = []
     number_of_items = 0
