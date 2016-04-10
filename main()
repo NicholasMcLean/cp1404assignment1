@@ -1,3 +1,10 @@
+'''
+Nicholas McLean(JC260896) - Due 11th of April, 2016
+
+This purpose of this code is to show a list of items which are available to hire. You are able to hire out an item, return an item, add a new item.
+
+https://github.com/NicholasMcLean/cp1404assignment1
+'''
 import csv
 
 '''
@@ -9,10 +16,13 @@ define load_items function(list of items, number of items)
     display number of items loaded from file
     return list o items and number of items
 '''
+#making a menu function so that it does not have to be typed out everytime it is needed
 def menu():
     print("Menu:\n(L)ist all items\n(H)ire an item\n(R)eturn\n(A)dd new item to stock\n(Q)uit")
     return
 
+
+#loading each row from the csv file and making it a tuple in a list called list_of_items
 def load_items(list_of_items, number_of_items):
     with open('items.csv', newline='') as csvfile:
         file = csv.reader(csvfile)
@@ -127,6 +137,25 @@ define return items function(list of items, number of items
     change row[-1] == "in"
     close csv file
     call main
+
+define add new item function
+get item name
+while item name = ""
+    display error message
+    get item name
+
+get item description
+while item description = ""
+    display error message
+    get item description
+
+get price per day as float
+while price per day is less than 0
+    display error message
+    get price per day as float
+
+display item availabe for hire message
+save item details to new row in csv file
 '''
 
 def main():
@@ -150,6 +179,4 @@ def main():
         quit
     else:
         return
-
-
 main()
