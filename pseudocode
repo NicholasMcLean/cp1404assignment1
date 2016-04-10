@@ -1,0 +1,15 @@
+Nicholas McLean(JC260896) - Due 11th of April, 2016
+
+This purpose of this code is to show a list of items which are available to hire. You are able to hire out an item, return an item, add a new item.
+
+https://github.com/NicholasMcLean/cp1404assignment1
+
+
+define load_items function(list of items, number of items)
+
+    open items.csv as csvfile
+        for row in file
+            list of items add row of data
+            number of items add 1
+    display number of items loaded from file
+    return list o items and number of items
